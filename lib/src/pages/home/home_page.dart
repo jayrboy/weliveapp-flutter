@@ -12,7 +12,8 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(height: 10),
-          Text('Home Page'),
+          FlutterLogo(size: 100),
+          Text('Home Page', textScaleFactor: 2.5),
         ],
       ),
     );

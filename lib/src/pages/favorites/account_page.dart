@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FavoritesPage extends StatelessWidget {
+class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -8,7 +8,10 @@ class FavoritesPage extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text('Favorites Page')],
+        children: [
+          FlutterLogo(size: 100),
+          Text('Account Page', textScaleFactor: 2.5),
+        ],
       ),
     );
   }

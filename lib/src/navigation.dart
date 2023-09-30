@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/pages/favorites/favorites_page.dart';
+import 'package:weliveapp/src/pages/favorites/account_page.dart';
 import 'package:weliveapp/src/pages/home/home_page.dart';
 import 'package:weliveapp/src/widgets/privacy_policy.dart';
 
@@ -28,17 +28,13 @@ class _NavigationState extends State<Navigation> {
         page = HomePage();
         break;
       case 1:
-        page = FavoritesPage();
+        page = AccountPage();
         break;
       case 2:
         page = PrivacyPolicy();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
-    }
-
-    void _showPrivacyPolicyPage() {
-      navigator.pushNamed('/privacy-policy');
     }
 
     // The container for the current page, with its background color
@@ -52,6 +48,33 @@ class _NavigationState extends State<Navigation> {
     );
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Welcome'),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: Image.asset(
+            'assets/images/we-logo.png',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: Row(
+              children: [
+                Icon(Icons.settings),
+              ],
+            ),
+          ),
+          TextButton(
+            onPressed: () => navigator.pushNamed('/'),
+            child: Row(
+              children: [
+                Icon(Icons.logout),
+              ],
+            ),
+          ),
+        ],
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 450) {
@@ -68,12 +91,12 @@ class _NavigationState extends State<Navigation> {
                         label: 'Home',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.favorite),
-                        label: 'Favorites',
+                        icon: Icon(Icons.person),
+                        label: 'Account',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.person),
-                        label: 'User',
+                        icon: Icon(Icons.privacy_tip),
+                        label: 'Privacy',
                       ),
                     ],
                     currentIndex: selectedIndex,
@@ -101,12 +124,12 @@ class _NavigationState extends State<Navigation> {
                         label: Text('Home'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.favorite),
-                        label: Text('Favorites'),
+                        icon: Icon(Icons.person),
+                        label: Text('Account'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.person),
-                        label: Text('User'),
+                        icon: Icon(Icons.privacy_tip),
+                        label: Text('Privacy'),
                       ),
                     ],
                     selectedIndex: selectedIndex,
