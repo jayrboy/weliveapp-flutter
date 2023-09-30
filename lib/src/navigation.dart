@@ -125,6 +125,18 @@ class _NavigationState extends State<Navigation> {
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.person),
+                        label: Text('Users'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.monitor),
+                        label: Text('Monitor'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.assignment),
+                        label: Text('Report'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.report_gmailerrorred),
                         label: Text('Account'),
                       ),
                       NavigationRailDestination(

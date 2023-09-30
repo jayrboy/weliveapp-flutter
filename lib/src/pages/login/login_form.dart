@@ -38,13 +38,15 @@ class _SignINFormState extends State<SignInForm> {
 
   @override
   Widget build(BuildContext context) {
+    const IconData facebook = IconData(0xe255, fontFamily: 'MaterialIcons');
+
     return Form(
       onChanged: _updateFormProgress, // NEW
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedProgressIndicator(value: _formProgress), // NEW
-          SizedBox(height: 10),
+          SizedBox(height: 30),
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
             child: Image.asset(
@@ -54,19 +56,49 @@ class _SignINFormState extends State<SignInForm> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(16),
             child: TextFormField(
               controller: _usernameTextController,
               decoration: const InputDecoration(hintText: 'Username'),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(16),
             child: TextFormField(
               controller: _passwordTextController,
               decoration: const InputDecoration(hintText: 'Password'),
             ),
           ),
+          SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Container(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.asset(
+                      'assets/images/g-logo.png',
+                      width: 45,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 10),
+              IconButton(
+                onPressed: () {},
+                icon: Container(
+                  child: Icon(
+                    facebook,
+                    size: 55,
+                    color: Color(0xFF4267B2),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 30),
           TextButton(
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.resolveWith(

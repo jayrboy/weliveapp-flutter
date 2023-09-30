@@ -11,10 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(context) {
     const String login = '/';
     const String navigation = '/home';
-    const String privacy = '/privacy';
     const String account = '/account';
+    const String privacy = '/privacy';
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         login: (context) => LoginPage(),
         navigation: (context) => Navigation(),
-        privacy: (context) => PrivacyPolicy(),
         account: (context) => AccountPage(),
+        privacy: (context) => PrivacyPolicy(),
       },
     );
   }
