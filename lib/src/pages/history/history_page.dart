@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AccountPage extends StatelessWidget {
+class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -9,8 +9,11 @@ class AccountPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          FlutterLogo(size: 100),
-          Text('Account Page', textScaleFactor: 2.5),
+          Icon(
+            Icons.history,
+            size: 100,
+          ),
+          Text('Store Page', textScaleFactor: 2.5),
         ],
       ),
     );

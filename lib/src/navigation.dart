@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/pages/favorites/account_page.dart';
-import 'package:weliveapp/src/pages/home/home_page.dart';
+import 'package:weliveapp/src/pages/customer/customer_page.dart';
+import 'package:weliveapp/src/pages/dashboard//dashboard_page.dart';
+import 'package:weliveapp/src/pages/history/history_page.dart';
+import 'package:weliveapp/src/pages/live/live_page.dart';
+import 'package:weliveapp/src/pages/order/orders_page.dart';
+import 'package:weliveapp/src/pages/problem/problem_page.dart';
+import 'package:weliveapp/src/pages/report/report_page.dart';
+import 'package:weliveapp/src/pages/store/store_page.dart';
 import 'package:weliveapp/src/widgets/privacy_policy.dart';
 
 class Navigation extends StatefulWidget {
@@ -25,19 +31,37 @@ class _NavigationState extends State<Navigation> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = HomePage();
+        page = DashboardPage();
         break;
       case 1:
-        page = AccountPage();
+        page = LivePage();
         break;
       case 2:
+        page = StorePage();
+        break;
+      case 3:
+        page = OrdersPage();
+        break;
+      case 4:
+        page = CustomerPage();
+        break;
+      case 5:
+        page = ReportPage();
+        break;
+      case 6:
+        page = HistoryPage();
+        break;
+      case 7:
+        page = ProblemPage();
+        break;
+      case 8:
         page = PrivacyPolicy();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
 
-    // The container for the current page, with its background color
+    // The container for the current page, with its Background Color
     // and subtle switching animation.
     var mainArea = ColoredBox(
       color: colorScheme.surfaceVariant,
@@ -46,31 +70,32 @@ class _NavigationState extends State<Navigation> {
         child: page,
       ),
     );
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Welcome'),
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: Image.asset(
-            'assets/images/we-logo.png',
+        leading: Padding(
+          padding: const EdgeInsets.all(1.0),
+          child: CircleAvatar(
+            backgroundImage: AssetImage('assets/images/we-logo.png'),
           ),
         ),
         actions: [
           TextButton(
             onPressed: () {},
             child: Row(
-              children: [
-                Icon(Icons.settings),
-              ],
+              children: [Icon(Icons.settings)],
             ),
           ),
           TextButton(
             onPressed: () => navigator.pushNamed('/'),
             child: Row(
-              children: [
-                Icon(Icons.logout),
-              ],
+              children: [Icon(Icons.logout)],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/jay-kmutnb.jpg'),
             ),
           ),
         ],
@@ -78,35 +103,67 @@ class _NavigationState extends State<Navigation> {
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 450) {
-            // Use a more mobile-friendly layout with BottomNavigationBar
+            // Use a more Mobile-Friendly Layout with BottomNavigationBar
             // on Mobile
             return Column(
               children: [
                 Expanded(child: mainArea),
-                SafeArea(
-                  child: BottomNavigationBar(
-                    items: [
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.home),
-                        label: 'Home',
+                BottomNavigationBar(
+                  items: [
+                    const BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.dashboard,
+                        color: Colors.black54,
                       ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.person),
-                        label: 'Account',
+                      label: 'Dashboard',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.facebook,
+                        color: Colors.black54, // Color(0xFF4267B2)
                       ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.privacy_tip),
-                        label: 'Privacy',
+                      label: 'Live',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.shopping_bag,
+                        color: Colors.black54,
                       ),
-                    ],
-                    currentIndex: selectedIndex,
-                    onTap: (value) {
-                      setState(() {
-                        selectedIndex = value;
-                      });
-                    },
-                  ),
-                )
+                      label: 'Store',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.local_grocery_store,
+                        color: Colors.black54,
+                      ),
+                      label: 'Orders',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.people,
+                        color: Colors.black54,
+                      ),
+                      label: 'Customer',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.assignment,
+                        color: Colors.black54,
+                      ),
+                      label: 'Report',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(
+                        Icons.history,
+                        color: Colors.black54,
+                      ),
+                      label: 'History',
+                    ),
+                  ],
+                  currentIndex: selectedIndex,
+                  selectedItemColor: Colors.deepPurpleAccent,
+                  onTap: (index) => setState(() => selectedIndex = index),
+                ),
               ],
             );
             // on Desktop
@@ -116,42 +173,50 @@ class _NavigationState extends State<Navigation> {
             return Row(
               children: [
                 SafeArea(
-                  child: NavigationRail(
-                    extended: constraints.maxWidth >= 600,
-                    destinations: [
-                      NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.person),
-                        label: Text('Users'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.monitor),
-                        label: Text('Monitor'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.assignment),
-                        label: Text('Report'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.report_gmailerrorred),
-                        label: Text('Account'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.privacy_tip),
-                        label: Text('Privacy'),
-                      ),
-                    ],
-                    selectedIndex: selectedIndex,
-                    onDestinationSelected: (value) {
-                      setState(() {
-                        selectedIndex = value;
-                      });
-                    },
-                  ),
-                ),
+                    child: NavigationRail(
+                  extended: constraints.maxWidth >= 600,
+                  destinations: [
+                    NavigationRailDestination(
+                      icon: Icon(Icons.dashboard),
+                      label: Text('Dashboard'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.facebook),
+                      label: Text('Facebook Live'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.shopping_bag),
+                      label: Text('Store'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.local_grocery_store),
+                      label: Text('Orders'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.people),
+                      label: Text('Customer'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.assignment),
+                      label: Text('Report'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.history),
+                      label: Text('History'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.help),
+                      label: Text('คำถามพบบ่อย'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.privacy_tip),
+                      label: Text('Privacy'),
+                    ),
+                  ],
+                  selectedIndex: selectedIndex,
+                  onDestinationSelected: (index) =>
+                      setState(() => selectedIndex = index),
+                )),
                 Expanded(child: mainArea),
               ],
             );
