@@ -126,7 +126,7 @@ class _NavigationState extends State<Navigation> {
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(
-                        Icons.shopping_bag,
+                        Icons.shopping_bag_outlined,
                         color: Colors.black54,
                       ),
                       label: 'Store',
@@ -185,7 +185,7 @@ class _NavigationState extends State<Navigation> {
                       label: Text('Facebook Live'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.shopping_bag),
+                      icon: Icon(Icons.shopping_bag_outlined),
                       label: Text('Store'),
                     ),
                     NavigationRailDestination(

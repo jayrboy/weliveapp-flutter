@@ -10,7 +10,7 @@ class StorePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.shopping_bag,
+            Icons.shopping_bag_outlined,
             size: 100,
           ),
           Text('Store Page', textScaleFactor: 2.5),
