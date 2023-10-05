@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weliveapp/src/navigation.dart';
+import 'package:weliveapp/src/pages/live/live_page.dart';
 import 'package:weliveapp/src/pages/login/login_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
     const String login = '/';
-    const String navigation = '/home';
+    const String navigation = '/dashboard';
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
