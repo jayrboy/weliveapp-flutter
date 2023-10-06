@@ -47,18 +47,11 @@ class _LoginFormState extends State<LogInForm> {
           mainAxisSize: MainAxisSize.min,
           children: [
             AnimatedProgressIndicator(value: _formProgress), // NEW
-            SizedBox(height: 30),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(30),
-              child: Image.asset(
-                'assets/images/weliveapp-logo.png',
-                width: 150,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(height: 30),
+            SizedBox(height: 20),
+            logoWeLive(),
+            SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
                   Icon(Icons.person),
@@ -68,12 +61,12 @@ class _LoginFormState extends State<LogInForm> {
                       controller: _usernameTextController,
                       decoration: const InputDecoration(hintText: 'Username'),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
                   Icon(Icons.lock_sharp),
@@ -88,36 +81,6 @@ class _LoginFormState extends State<LogInForm> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset(
-                        'assets/images/g-logo.png',
-                        width: 45,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10),
-                IconButton(
-                  onPressed: () {},
-                  icon: Container(
-                    child: Icon(
-                      facebook,
-                      size: 55,
-                      color: Color(0xFF4267B2),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -151,9 +114,40 @@ class _LoginFormState extends State<LogInForm> {
               onPressed: _formProgress == 1 ? _showMyHomePage : null,
               child: const Text('Login'),
             ),
+            SizedBox(height: 30),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    facebook,
+                    size: 50,
+                    color: Color(0xFF4267B2),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/images/google-logo.png',
+                    width: 45,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
   }
+
+  ClipRRect logoWeLive() => ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Image.asset(
+          'assets/images/weliveapp-logo.png',
+          width: 150,
+          fit: BoxFit.cover,
+        ),
+      );
 }

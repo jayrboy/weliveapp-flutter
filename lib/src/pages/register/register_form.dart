@@ -51,6 +51,11 @@ class _LoginFormState extends State<RegisterForm> {
           mainAxisSize: MainAxisSize.min,
           children: [
             AnimatedProgressIndicator(value: _formProgress), // NEW
+            SizedBox(height: 10),
+            Text(
+              'Register',
+              textScaleFactor: 2.0,
+            ),
             Padding(
               padding: const EdgeInsets.all(16),
               child: TextFormField(
@@ -111,7 +116,7 @@ class _LoginFormState extends State<RegisterForm> {
                     }),
                   ),
                   onPressed: _formProgress == 1 ? _showDashboard : null,
-                  child: const Text('Register'),
+                  child: const Text('Enter'),
                 ),
               ],
             ),

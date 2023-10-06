@@ -1,5 +1,5 @@
 name: weliveapp
-description: A new Flutter project.
+description: The WE Live App project by Jay Jakkrit.
 publish_to: 'none'
 version: 0.1.0
 
@@ -8,16 +8,23 @@ environment:
 
 dependencies:
   english_words: ^4.0.0
+  firebase_auth: ^4.10.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
   flutter_facebook_auth: ^6.0.2
+  flutter_launcher_icons: ^0.13.1
   flutter_markdown: ^0.6.17+3
   github: ^9.19.0
   google_fonts: ^6.1.0
   intl: ^0.18.1
   provider: ^6.0.5
   url_launcher: ^6.1.14
+
+flutter_icons:
+  web:
+    generate: true
+    image_path: "assets/images/weliveapp-icon.png"
 
 dev_dependencies:
   flutter_test:

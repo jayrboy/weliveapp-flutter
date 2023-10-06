@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weliveapp/src/appbar.dart';
+import 'package:weliveapp/src/pages/login/facebook_login.dart';
 import 'package:weliveapp/src/pages/login/login_page.dart';
 import 'package:weliveapp/src/pages/register/register_page.dart';
 
@@ -10,9 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(context) {
     const String login = '/';
     const String register = '/register';
+    const String facebook = '/facebook';
     const String navigation = '/dashboard';
 
     return MaterialApp(
+      title: 'WE Live App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -22,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         login: (context) => LoginPage(),
         register: (context) => RegisterPage(),
+        facebook: (context) => FacebookLogin(),
         navigation: (context) => MyAppBar(),
       },
     );
