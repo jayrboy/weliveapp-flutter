@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

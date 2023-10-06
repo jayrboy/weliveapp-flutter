@@ -5,14 +5,14 @@ class ReportPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    IconData icon = Icons.favorite;
+    IconData icon = Icons.assignment;
 
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.assignment,
+            icon,
             size: 100,
           ),
           Text('Report Page', textScaleFactor: 2.5),

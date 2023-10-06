@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/pages/login/login_form.dart';
+import 'package:weliveapp/src/pages/register/register_form.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Card(
             child: Padding(
               padding: const EdgeInsets.all(32.0),
-              child: LogInForm(),
+              child: RegisterForm(),
             ),
           ),
         ),

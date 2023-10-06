@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:weliveapp/src/widgets/animated_progress_indicator.dart';
 
-class SignInForm extends StatefulWidget {
-  const SignInForm({super.key});
+class LogInForm extends StatefulWidget {
+  const LogInForm({super.key});
 
   @override
-  State<SignInForm> createState() => _SignINFormState();
+  State<LogInForm> createState() => _LoginFormState();
 }
 
-class _SignINFormState extends State<SignInForm> {
+class _LoginFormState extends State<LogInForm> {
   final _usernameTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
 
@@ -56,21 +56,39 @@ class _SignINFormState extends State<SignInForm> {
                 fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: TextFormField(
-                controller: _usernameTextController,
-                decoration: const InputDecoration(hintText: 'Username'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: TextFormField(
-                controller: _passwordTextController,
-                decoration: const InputDecoration(hintText: 'Password'),
-              ),
-            ),
             SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Icon(Icons.person),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: TextFormField(
+                      controller: _usernameTextController,
+                      decoration: const InputDecoration(hintText: 'Username'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Icon(Icons.lock_sharp),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: TextFormField(
+                      controller: _passwordTextController,
+                      decoration: const InputDecoration(hintText: 'Password'),
+                      obscureText: true,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -100,6 +118,21 @@ class _SignINFormState extends State<SignInForm> {
               ],
             ),
             SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text('Forget Password'),
+                ),
+                Text('|'),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pushNamed('/register'),
+                  child: Text('Register'),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
             TextButton(
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.resolveWith(
@@ -116,7 +149,7 @@ class _SignINFormState extends State<SignInForm> {
                 }),
               ),
               onPressed: _formProgress == 1 ? _showMyHomePage : null,
-              child: const Text('Sign In'),
+              child: const Text('Login'),
             ),
           ],
         ),

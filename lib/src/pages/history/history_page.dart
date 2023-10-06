@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -13,7 +11,7 @@ class HistoryPage extends StatelessWidget {
             Icons.history,
             size: 100,
           ),
-          Text('Store Page', textScaleFactor: 2.5),
+          Text('History Page', textScaleFactor: 2.5),
         ],
       ),
     );

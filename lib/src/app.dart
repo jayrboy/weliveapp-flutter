@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/navigation.dart';
-import 'package:weliveapp/src/pages/live/live_page.dart';
+import 'package:weliveapp/src/appbar.dart';
 import 'package:weliveapp/src/pages/login/login_page.dart';
+import 'package:weliveapp/src/pages/register/register_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
     const String login = '/';
+    const String register = '/register';
     const String navigation = '/dashboard';
 
     return MaterialApp(
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         login: (context) => LoginPage(),
-        navigation: (context) => Navigation(),
+        register: (context) => RegisterPage(),
+        navigation: (context) => MyAppBar(),
       },
     );
   }
