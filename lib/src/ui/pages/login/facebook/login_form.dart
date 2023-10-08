@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/widgets/animated_progress_indicator.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:weliveapp/src/domain/repositories/session_repository.dart';
+import 'package:weliveapp/src/ui/global/controllers/session_controller.dart';
+import 'package:weliveapp/src/ui/pages/animated_progress_indicator.dart';
+import 'package:weliveapp/src/ui/routes/routes.dart';
 
 class LogInForm extends StatefulWidget {
   const LogInForm({super.key});
@@ -11,11 +16,14 @@ class LogInForm extends StatefulWidget {
 class _LoginFormState extends State<LogInForm> {
   final _usernameTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
+  bool _fetching = false;
+
+  bool setFetching(bool value) => _fetching = value;
 
   double _formProgress = 0;
 
-  void _showMyHomePage() {
-    Navigator.of(context).pushNamed('/dashboard');
+  void _showDashboardPage() {
+    Navigator.of(context).pushNamed('/');
   }
 
   void _updateFormProgress() {
@@ -111,7 +119,7 @@ class _LoginFormState extends State<LogInForm> {
                       : Colors.deepPurpleAccent;
                 }),
               ),
-              onPressed: _formProgress == 1 ? _showMyHomePage : null,
+              onPressed: _formProgress == 1 ? _showDashboardPage : null,
               child: const Text('Login'),
             ),
             SizedBox(height: 30),
@@ -120,7 +128,10 @@ class _LoginFormState extends State<LogInForm> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _signInWithFacebook(context);
+                    setState(() {});
+                  },
                   icon: Icon(
                     facebook,
                     size: 50,
@@ -150,4 +161,30 @@ class _LoginFormState extends State<LogInForm> {
           fit: BoxFit.cover,
         ),
       );
+
+  Future<void> _signInWithFacebook(BuildContext context) async {
+    // Check if the Facebook web SDK is initialized
+    bool isSdkInitialized = FacebookAuth.i.isWebSdkInitialized;
+    setFetching(true);
+    final SessionRepository sessionRepository = context.read();
+    final result = await sessionRepository.logIn();
+    if (result.status == LoginStatus.success) {
+      final user = await sessionRepository.user;
+      if (user != null) {
+        if (mounted) {
+          final SessionController sessionController = context.read();
+          sessionController.updateUser(user);
+          Navigator.pushReplacementNamed(context, Routes.navigation);
+          return;
+        }
+      }
+    } else if (mounted) {
+      ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+        SnackBar(
+          content: Text(result.status.name),
+        ),
+      );
+    }
+    setFetching(false);
+  }
 }

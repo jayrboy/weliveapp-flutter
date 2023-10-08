@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/pages/customer/customer_page.dart';
-import 'package:weliveapp/src/pages/dashboard//dashboard_page.dart';
-import 'package:weliveapp/src/pages/history/history_page.dart';
-import 'package:weliveapp/src/pages/live/live_page.dart';
-import 'package:weliveapp/src/pages/order/orders_page.dart';
-import 'package:weliveapp/src/pages/problem/problem_page.dart';
-import 'package:weliveapp/src/pages/report/report_page.dart';
-import 'package:weliveapp/src/pages/store/store_page.dart';
-import 'package:weliveapp/src/widgets/privacy_policy.dart';
+import 'package:weliveapp/src/ui/pages/customer/customer_page.dart';
+import 'package:weliveapp/src/ui/pages/dashboard/dashboard_page.dart';
+import 'package:weliveapp/src/ui/pages/history/history_page.dart';
+import 'package:weliveapp/src/ui/pages/live/live_page.dart';
+import 'package:weliveapp/src/ui/pages/order/orders_page.dart';
+import 'package:weliveapp/src/ui/pages/privacy_policy.dart';
+import 'package:weliveapp/src/ui/pages/problem/problem_page.dart';
+import 'package:weliveapp/src/ui/pages/report/report_page.dart';
+import 'package:weliveapp/src/ui/pages/store/store_page.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({Key? key}) : super(key: key);

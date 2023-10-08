@@ -1,25 +1,36 @@
 # weliveapp
+The WE Live App project by Jay Jakkrit.
 
-A new Flutter project.
+# create app
+flutter create weliveapp --template=app --platform=web --org=com.google.firebase.presents --project-name=weliveapp
+cd weliveapp
+code .
+flutter pub add firebase_core
+flutterfire configure
 
-# create
-flutter create --platforms web .
-
-# build & deploy
-flutter build web --release
-
-# install firebase
-npm install -g firebase-tools
-firebase login:ci
-
-# firebase.json
-'build/web'
-
-firebase init hosting
-firebase deploy
-
-# run chrome
+# run chrome / devtools
 flutter run -d chrome
 
-# icon app
+# test chrome
+flutter test --platform chrome
+
+# icon update
 flutter pub run flutter_launcher_icons:main
+
+# create directory ./web (my web app)
+flutter create --platforms web .
+
+# build directory ./build/web 
+flutter build web --release
+
+# install firebase & login
+npm install -g firebase-tools
+firebase login:ci
+firebase login
+
+# edit ./firebase.json
+"public": "build/web",
+
+# initial firebase and deploy
+firebase init hosting
+firebase deploy

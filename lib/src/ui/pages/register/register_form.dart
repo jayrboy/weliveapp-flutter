@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/widgets/animated_progress_indicator.dart';
+import 'package:weliveapp/src/ui/pages/animated_progress_indicator.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
@@ -18,7 +18,7 @@ class _LoginFormState extends State<RegisterForm> {
   double _formProgress = 0;
 
   void _showDashboard() {
-    Navigator.of(context).pushNamed('/dashboard');
+    Navigator.of(context).pushNamed('/');
   }
 
   void _updateFormProgress() {

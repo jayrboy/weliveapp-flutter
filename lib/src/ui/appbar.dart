@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weliveapp/src/widgets/navigation.dart';
+import 'package:provider/provider.dart';
+import 'package:weliveapp/src/ui/global/controllers/session_controller.dart';
+import 'package:weliveapp/src/ui/navigation.dart';
 
 class MyAppBar extends StatefulWidget {
   const MyAppBar({super.key});
@@ -11,6 +13,7 @@ class MyAppBar extends StatefulWidget {
 class _MyAppBar extends State<MyAppBar> {
   @override
   Widget build(BuildContext context) {
+    final user = context.read<SessionController>().user!;
     final theme = Theme.of(context);
     var colorScheme = Theme.of(context).colorScheme;
     final style = theme.textTheme.displayMedium!.copyWith(
@@ -21,16 +24,17 @@ class _MyAppBar extends State<MyAppBar> {
       appBar: AppBar(
         title: const Text('Welcome'),
         leading: Padding(
-          padding: const EdgeInsets.all(1.0),
+          padding: const EdgeInsets.all(1.5),
           child: CircleAvatar(
             backgroundImage: AssetImage('assets/images/we-logo.png'),
           ),
         ),
         actions: [
-          TextButton(
-            onPressed: () {},
-            child: Row(
-              children: [Icon(Icons.settings)],
+          Text(user.name),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.network(
+              user.profilePicture!,
             ),
           ),
           TextButton(
@@ -41,12 +45,6 @@ class _MyAppBar extends State<MyAppBar> {
             ),
             child: Row(
               children: [Icon(Icons.logout)],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/images/jay-kmutnb.jpg'),
             ),
           ),
         ],
@@ -68,7 +66,7 @@ class _MyAppBar extends State<MyAppBar> {
             child: const Text('Cancel'),
           ),
           TextButton(
-            onPressed: () => Navigator.of(context).pushNamed('/'),
+            onPressed: () => Navigator.of(context).pushNamed('/login'),
             child: const Text('Logout'),
           ),
         ],
